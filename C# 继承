@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace lianXi1
+{
+    class Program
+    {
+        public class Animal
+        {
+            private string aniName;
+            private int aniAge;
+
+            public Animal()
+            {
+                Console.WriteLine("Base Constructor");
+            }
+
+            public string AniName
+            {
+                get { return aniName; }
+                set { aniName = value; }
+            }
+            public int AniAge
+            {
+                get { return aniAge; }
+                set { aniAge = value; }
+            }
+        }
+        public class Horse : Animal
+        {
+            private int id = 10589;
+
+            public int ID
+            {
+                get { return id; }
+                set { id = value; }
+            }
+
+            public Horse()
+            {
+                Console.WriteLine("Child Constructor");
+            }
+        }
+        public class Sheep : Animal
+        {
+
+        }
+        class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                Horse horse = new Horse();
+                horse.AniAge = 12;
+                Console.WriteLine("Horse's age is {0}", horse.AniAge);
+                System.Console.ReadKey();
+                /*
+                Sheep sheep = new Sheep();
+                sheep.AniName = "Sheep";
+                Console.WriteLine(sheep.AniName);
+                sheep.AniAge = 1;
+                Console.WriteLine("马的年龄为{0}", sheep.AniAge);
+               
+            */
+                /*上述代码中，虽然子类没有定义Age属性，但是由于他们都继承Animal，
+            * 基类中有Age属性所有子类也就继承了父类的Age。需要注意的是，子
+            * 类并不能对弗雷的私有成员进行访问，它只能对保护成员或者公有成
+            * 员进行访问。如果把上述代码中的Age属性定义私有属性，则Main函数
+            * 则不能直接对该属性进行赋值操作了。私有成员也会被子类继承，但
+            * 是子类不能直接访问私有成员。子类可以通过调用公有或者保护方法
+            * 简介的对私有成员进行访问。*/
+            }
+        }
+    }
+}
