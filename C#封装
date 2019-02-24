@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace lianXi_fengzhuang
+{
+    public class Person {
+        private string name;
+        private int age;
+
+        public string Name {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Age {
+            get { return age; }
+            set {
+                if (value >= 0 && value <= 120)
+                {
+                    age = value;
+                }
+                else {
+                    age = 80;
+                    Console.WriteLine("Age beyond arrange");
+                }
+            }
+        }
+    }
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            Person p = new Person();
+            p.Age = 20;
+            Console.WriteLine("age is {0}", p.Age);
+            System.Console.ReadKey();
+        }
+    }
+}
