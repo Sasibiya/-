@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace lianXi_duotai
+{
+    /*多态即相同类型的对象调用相同的方法却表现出不同行为的现象*/
+
+    class Program
+    {
+        public class Animal
+        {
+            private string aniName;
+            private int aniAge;
+
+            public Animal()
+            {
+                Console.WriteLine("Base Constructor");
+            }
+
+            public string AniName
+            {
+                get { return aniName; }
+                set { aniName = value; }
+            }
+            public int AniAge
+            {
+                get { return aniAge; }
+                set { aniAge = value; }
+            }
+            public virtual void Voice(){                   /*基类里用virtual去修饰*/
+                Console.WriteLine("Animal start voiving");
+            }
+        }
+        public class Horse : Animal{
+            private int id = 10589;
+
+            public int ID{
+                get { return id; }
+                set { id = value; }
+            }
+
+            public Horse(){
+                Console.WriteLine("Child Constructor");
+            }
+             public override void Voice(){            /*子类里边用override去修饰*/
+                        Console.WriteLine("House is voicving ");
+                    }
+        }
+        public class Sheep : Animal{
+            public override void Voice()
+            {
+                base.Voice();
+                Console.WriteLine("sheep is voicing");
+            }
+
+        }
+        class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                /*多态：
+                 * 实现方法的重写，注意：
+                 * 父类中的成员要用virtual或者abstract关键字
+                 * 修饰，子类在进行重写的过程中，要使用override
+                 * 关键字修饰需要重写的父类成员
+                 */
+                Horse horse = new Horse();
+                horse.Voice();
+                Sheep sheep = new Sheep();
+                sheep.Voice();
+                Console.ReadKey();
+            }
+        }
+    }
+}
